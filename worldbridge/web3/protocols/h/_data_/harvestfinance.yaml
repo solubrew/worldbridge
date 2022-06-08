@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xa0246c9032bC3A600820415aE600c6388619A14D'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/h/_data_/img/1harvestfinance.png
+    name: Harvest Finance
+    symbol: FARM
+    type: ERC20

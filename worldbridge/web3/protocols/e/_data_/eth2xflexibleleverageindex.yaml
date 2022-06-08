@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/e/_data_/img/1eth2xflexibleleverageindex.png
+    name: ETH 2x Flexible Leverage Index
+    symbol: ETH2x-FLI
+    type: ERC20

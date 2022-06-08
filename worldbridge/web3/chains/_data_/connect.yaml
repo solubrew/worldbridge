@@ -1,0 +1,29 @@
+'networks':
+  'mainnet':
+    'id': 1
+    'providers':
+      'geth':
+        'path': '{home}/.ethereum/geth.ipc'
+      'infura':
+        'path': 'https://mainnet.infura.io/v3/fae26ec1906a4e2cb968992359cdb5c0'
+      'erigon':
+        'path': 'http://'
+        'ip': '127.0.0.1'
+        'port': 8545
+      'getblock': #https://getblock.io/en/pricing
+        'path':
+  'ropsten':
+    'id': 3
+    'providers':
+  'rinkeby':
+    'id': 4
+    'providers':
+  'goerli':
+    'id': 5
+    'providers':
+  'kovan':
+    'id': 42
+    'providers':
+  'arb1':
+    'id': 42161
+    'providers':

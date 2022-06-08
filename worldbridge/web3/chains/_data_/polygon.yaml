@@ -1,0 +1,40 @@
+
+infura:
+  networks:
+    polygon:
+      mainnet:
+        api:
+          key: <(USER_SESSION)>
+          build:
+            0: https://polygon-mainnet.infura.io/v3/
+            1: '{apikey}'
+
+contracts:
+  - '' :
+    name: Token Contract
+    symbol: 'MATIC'
+    release_date:
+    networks:
+      - ethereum
+      - polygon
+  - '':
+    'name': Wrapped Token Contract
+    'symbol':
+    'release_date':
+    'networks':
+      - ethereum
+      - polygon
+media:
+  'telegram':
+    - community:
+    - annoucment:
+  'discord':
+  'medium':
+  'hosted':
+  'icon':
+  'github':
+tabs:
+  - Staking
+  - Trading
+  - Liquidity
+  - WhaleWatcher

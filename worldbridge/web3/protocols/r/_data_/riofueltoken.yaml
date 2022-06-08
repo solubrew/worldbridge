@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xaf9f549774ecEDbD0966C52f250aCc548D3F36E5'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/r/_data_/img/1riofueltoken.png
+    name: Rio Fuel Token
+    symbol: RFuel
+    type: ERC20

@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xfC98e825A2264D890F9a1e68ed50E1526abCcacD'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/m/_data_/img/1mosscarboncredit.png
+    name: Moss Carbon Credit
+    symbol: MCO2
+    type: ERC20

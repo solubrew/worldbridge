@@ -1,0 +1,11 @@
+BAYC:
+  token:
+    1:
+      address: '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'
+      chainId: 1
+      decimals:
+      logoURI: worldbridger/web3/protocols/m/_data_/img/.png
+      name: Bored Ape Yacht Club
+      symbol: BAYC
+      type: ERC721
+      abi: >

@@ -1,0 +1,23 @@
+
+
+
+
+
+
+
+sub_version: '/Satoshi:0.20.0/'
+peers:
+  -
+    ip: '35.187.204.226'
+    port: 8333
+  -
+    ip: '34.84.109.102'
+    port: 8333
+  -
+    ip: '99.230.58.161'
+    port: 8333
+verack:
+  hex: 'f9beb4d976657261636b000000000000000000005df6e0e2'
+network:
+  hex: '00000000000000000000ffff'
+magic: '0xd9b4bef9'

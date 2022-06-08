@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xc719d010B63E5bbF2C0551872CD5316ED26AcD83'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/d/_data_/img/1decentralizedinsuranceprotocol.png
+    name: Decentralized Insurance Protocol
+    symbol: DIP
+    type: ERC20

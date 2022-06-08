@@ -1,0 +1,12 @@
+---
+ERC777:
+  token:
+    1:
+      address:
+      chainId: 1
+      decimals:
+      logoURI:
+      name:
+      symbol:
+      type: BASE
+      abi: >

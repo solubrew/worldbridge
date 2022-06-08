@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0x66a0f676479Cee1d7373f3DC2e2952778BfF5bd6'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/w/_data_/img/1wisetoken.png
+    name: Wise Token
+    symbol: WISE
+    type: ERC20

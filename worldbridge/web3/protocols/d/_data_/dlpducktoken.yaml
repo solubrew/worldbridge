@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xC0bA369c8Db6eB3924965e5c4FD0b4C1B91e305F'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/d/_data_/img/1dlpducktoken.png
+    name: DLP Duck Token
+    symbol: DUCK
+    type: ERC20

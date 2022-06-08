@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xBBbbCA6A901c926F240b89EacB641d8Aec7AEafD'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/l/_data_/img/1loopring.png
+    name: Loopring
+    symbol: LRC
+    type: ERC20

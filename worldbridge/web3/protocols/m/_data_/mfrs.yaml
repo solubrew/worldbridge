@@ -1,0 +1,11 @@
+MFRS:
+  token:
+    1:
+      address: '0x79FCDEF22feeD20eDDacbB2587640e45491b757f'
+      chainId: 1
+      decimals:
+      logoURI: worldbridger/web3/protocols/m/_data_/img/mfrs1.png
+      name: Mutant Ape Yacht Club
+      symbol: MAYC
+      type: ERC721
+      abi:

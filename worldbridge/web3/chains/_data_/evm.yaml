@@ -1,0 +1,66 @@
+---
+'<(META)>':
+  docid: '<^(UUID)^>'
+  name:
+  description: >
+    setup a database connection for lookingup commonly used contracts
+    setup with a fallback to a local sqlite database housed in the AIM
+  expirary: '<[expiration]>'
+  version: '0.0.0.0.0.0'
+  path: '<[LEXIvrs]>'
+  outline:
+    MTA: '0000.0000.0000.----'
+    MTD: '0000.0000.0000.----'
+    MTF: '0000.0000.0000.----'
+    MTS: '0000.0000.0000.----'
+  authority: 'document|this'
+  security: 'sec|lvl2'
+  '<(WT)>': -32
+blockchaindr:
+  'api':
+    'key':
+  'db': 'BlockchainDR:ethereum'
+  'tables':
+    'transactions':
+      'build':
+        0: 'WHERE {0}'
+        1: 'blocknum = {blocknum} {0}'
+        2: '"from" = {address} {0}'
+        3: '"from" IN [{addresses}] {0}'
+        4: 'to = {address} {0}'
+        5: 'to IN [addresses] {0}'
+        6: 'hash = {transaction_hash} {0}'
+        7: 'hash IN [{transaction_hashs}] {0}'
+        8: 'blockhash = {blockhash} {0}'
+        9: 'blockhash IN [{blockhashes}] {0}'
+        10: 'blocknum BETWEEN {block0} AND {block1} {0}'
+        11: 'timestamp BETWEEN {timestamp0} AND {timestamp1} {0}'
+        12: 'nonce = {nonce} {0}'
+        13: 'nonce BETWEEN {nonce0} AND {nonce1} {0}'
+  'views':
+ethereum:
+  'ETH_ADDRESS': "0x0000000000000000000000000000000000000000"
+  'networks':
+    'mainnet': 1
+    'testnets':
+      'ropsten': 3
+      'rinkeby': 4
+      'goerli': 5
+      'kovan': 42
+geth:
+infura:
+  networks:
+    ethereum:
+      mainnet:
+        api:
+          key: <(USER_SESSION)>
+          name:
+          build:
+            0: 'https://mainnet.infura.io/v3/'
+            1: '{apikey}'
+  endpoints:
+modules:
+  checkPrecision:
+    'location':
+      db: 'EconometricDR:crypto'
+      view: 'active_unis_tokens'

@@ -1,0 +1,65 @@
+token:
+  eth:
+    1:
+      address: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9'
+      chainId: 1
+      decimals: 18
+      logoURI: worldbridger/web3/protocols/a/_data_/img/1aave.png
+      name: Aave
+      symbol: AAVE
+      type: ERC20
+  matic:
+    1:
+stake_reciepts:
+  eth:
+    ausdc:
+      1:
+    aeth:
+      1:
+  matic:
+    amusdc:
+      1:
+    ameth:
+aave:
+  contracts:
+    - '' :
+      name: Token Contract
+      'symbol': 'AAVE'
+      release_date:
+    - '' :
+      name: Receipt Token Contract
+      symbol: 'amETH'
+      description: >
+        ETH token staked in the AAVE protocol on the Polyscan Network
+      networks:
+        - polyscan
+  media:
+    'telegram':
+      - community:
+      - annoucment:
+    'discord':
+    'medium':
+    'hosted':
+    'icon':
+    'github':
+  tabs:
+    - Staking
+    - Trading
+    - Liquidity
+    - WhaleWatcher
+  onchain:
+    symbol: 'AAVE'
+    tokencontract: ''
+tokenfamily:
+  'description': >
+    token family relates various wrapped tokens to its parent across chains
+  '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984':
+    'children':
+      '0x...':
+        'symbol':
+        'chain': polygon
+        'type': 'wrappedchainnative'
+        'children':
+          '0x...':
+            'symbol': 'amUNI'
+            type: 'protocolwrappedchainnative'

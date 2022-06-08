@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0x09e64c2B61a5f1690Ee6fbeD9baf5D6990F8dFd0'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/g/_data_/img/1growthdefi.png
+    name: Growth DeFi
+    symbol: GRO
+    type: ERC20

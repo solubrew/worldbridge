@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0x4B1E80cAC91e2216EEb63e29B957eB91Ae9C2Be8'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/j/_data_/img/1jupiter.png
+    name: Jupiter
+    symbol: JUP
+    type: ERC20

@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xeEAA40B28A2d1b0B08f6f97bB1DD4B75316c6107'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/g/_data_/img/1govi.png
+    name: GOVI
+    symbol: GOVI
+    type: ERC20

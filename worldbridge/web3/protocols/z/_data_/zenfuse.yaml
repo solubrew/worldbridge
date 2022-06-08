@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xB1e9157c2Fdcc5a856C8DA8b2d89b6C32b3c1229'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/z/_data_/img/1zenfuse.png
+    name: Zenfuse
+    symbol: ZEFU
+    type: ERC20

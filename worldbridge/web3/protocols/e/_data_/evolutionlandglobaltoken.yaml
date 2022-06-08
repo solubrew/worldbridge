@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0x9469D013805bFfB7D3DEBe5E7839237e535ec483'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/e/_data_/img/1evolutionlandglobaltoken.png
+    name: Evolution Land Global Token
+    symbol: RING
+    type: ERC20

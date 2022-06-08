@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0x85Eee30c52B0b379b046Fb0F85F4f3Dc3009aFEC'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/k/_data_/img/1keeptoken.png
+    name: KEEP Token
+    symbol: KEEP
+    type: ERC20

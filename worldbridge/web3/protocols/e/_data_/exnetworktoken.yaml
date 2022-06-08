@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xD6c67B93a7b248dF608a653d82a100556144c5DA'
+    chainId: 1
+    decimals: 16
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/e/_data_/img/1exnetworktoken.png
+    name: ExNetwork Token
+    symbol: EXNT
+    type: ERC20

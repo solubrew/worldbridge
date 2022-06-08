@@ -1,0 +1,21 @@
+---
+'<(META)>':
+  docid: '<^(UUID)^>'
+  name:
+  description: >
+  expirary: '<[expiration]>'
+  version: '0.0.0.0.0.0'
+  path: '<[LEXIvrs]>'
+  outline:
+    MTA: '0000.0000.0000.----'
+    MTD: '0000.0000.0000.----'
+    MTF: '0000.0000.0000.----'
+    MTS: '0000.0000.0000.----'
+  authority: 'document|this'
+  security: 'sec|lvl2'
+  '<(WT)>': -32
+repos:
+  trustwallet:
+    endpoints:
+      'assets':
+        'url': https://github.com/trustwallet/assets.git

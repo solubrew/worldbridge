@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xaDB2437e6F65682B85F814fBc12FeC0508A7B1D0'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/u/_data_/img/1unicrypt.png
+    name: UniCrypt
+    symbol: UNCX
+    type: ERC20

@@ -1,0 +1,21 @@
+
+
+
+
+
+
+
+map:
+  created_at: date
+  full_text:
+  hashtags:
+  retweeted:
+  coordinates:
+  urls:
+  location:
+  geo:
+  language:
+  possibly_sensitive:
+  place:
+  geo:
+  search:

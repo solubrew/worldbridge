@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xEd91879919B71bB6905f23af0A68d231EcF87b14'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/d/_data_/img/1dmm:governance.png
+    name: 'DMM: Governance'
+    symbol: DMG
+    type: ERC20

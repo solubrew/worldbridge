@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xd084B83C305daFD76AE3E1b4E1F1fe2eCcCb3988'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/t/_data_/img/1terravirtuakolect.png
+    name: Terra Virtua Kolect
+    symbol: TVK
+    type: ERC20

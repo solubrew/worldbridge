@@ -1,0 +1,93 @@
+numerai:
+  graphQLs:
+    -
+      Name: Upload Predictions
+      cmd: >
+    -
+      Name: Set Stakes
+      args:
+        code:
+        confidence:
+        password:
+        round:
+        value:
+      cmd: >
+        mutation(
+          $code: String,
+          $confidence: String!
+          $password: String
+          $round: Int!
+          $value: String!) {
+            stake(
+              code: $code
+              confidence: $confidence
+              password: $password
+              round: $round
+              value: $value
+            )
+            {id status txHash value}
+          }
+    -
+      Name: Stakes Status
+      cmd: >
+    -
+      Name: Current Data
+      args:
+        tournament: <[tournament]>
+      cmd: >
+        query($tournament: Int!) {rounds(tournament: $tournament number: 0) {number}}
+      cmd1: >
+        query($tournament: Int!) {dataset(tournament: $tournament)}
+    -
+      Name: Transactions
+      cmd: >
+    -
+      Name: Payments
+      cmd: >
+    -
+      Name: Submission Ids
+      cmd: >
+    -
+      Name: Submission Status
+      cmd: >
+    -
+      Name: Current Round
+      cmd: >
+    -
+      Name: User Data
+      cmd: >
+    -
+      Name: Compeititions
+      cmd: >
+        query {
+          rounds { number resolveTime datasetId openTime resolvedGeneral resolvedStaking}
+        }
+    -
+      Name: Staking LeaderBoard
+      cmd: >
+        query($number: Int!) {
+          rounds(number: $number) {
+            leaderboard {
+              consistency
+              liveLogloss
+              username
+              validationLogloss
+              stake {insertedAt soc confidence value txHash
+        }}}}
+    -
+      Name: LeaderBoard
+      cmd: >
+        query($number: Int!) {
+          rounds(number: $number) {
+            leaderboard {
+              consistency
+              concordance {pending value}
+              originality {pending value}
+              liveLogloss
+              submissionId
+              username
+              validationLogloss
+              paymentGeneral {nmrAmount usdAmount}
+              paymentStaking {nmrAmount usdAmount}
+              totalPayments {nmrAmount usdAmount}
+        }}}

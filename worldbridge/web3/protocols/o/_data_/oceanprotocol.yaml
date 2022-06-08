@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0x967da4048cD07aB37855c090aAF366e4ce1b9F48'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/o/_data_/img/1oceanprotocol.png
+    name: Ocean Protocol
+    symbol: OCEAN
+    type: ERC20

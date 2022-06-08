@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0x26E43759551333e57F073bb0772F50329A957b30'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/d/_data_/img/1degenvc.png
+    name: DegenVC
+    symbol: DGVC
+    type: ERC20

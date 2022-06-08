@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0x9BE89D2a4cd102D8Fecc6BF9dA793be995C22541'
+    chainId: 1
+    decimals: 8
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/b/_data_/img/1binancewrappedbtc.png
+    name: Binance Wrapped BTC
+    symbol: BBTC
+    type: ERC20

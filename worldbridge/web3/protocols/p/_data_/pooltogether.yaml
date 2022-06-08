@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0x0cEC1A9154Ff802e7934Fc916Ed7Ca50bDE6844e'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/p/_data_/img/1pooltogether.png
+    name: PoolTogether
+    symbol: POOL
+    type: ERC20

@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xa8c8CfB141A3bB59FEA1E2ea6B79b5ECBCD7b6ca'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/s/_data_/img/1syntropy.png
+    name: Syntropy
+    symbol: NOIA
+    type: ERC20

@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xaA7a9CA87d3694B5755f213B5D04094b8d0F0A6F'
+    chainId: 1
+    decimals: 18
+    logoURI: worldbridger/web3/protocols/t/_data_/img/1tracetoken.png
+    name: Trace Token
+    symbol: TRAC
+    type: ERC20

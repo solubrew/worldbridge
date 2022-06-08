@@ -1,0 +1,21 @@
+
+
+history:
+  cmd: 'https://slack.com/api/conversations.history?token={0}&channel={1}'
+  page: 'https://slack.com/api/conversations.history?token={0}&channel={1}&cursor={2}&limit=200'
+  example: >
+    messages: [
+      {'client_msg_id': ,
+        'type': ,
+        'text': ,
+        'user': ,
+        'ts': ,
+        'team': ,
+        'attachments': ,
+        'blocks': ,
+        }
+    ]
+
+
+
+workspaces:

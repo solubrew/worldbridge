@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/m/_data_/img/1meta.png
+    name: Meta
+    symbol: MTA
+    type: ERC20

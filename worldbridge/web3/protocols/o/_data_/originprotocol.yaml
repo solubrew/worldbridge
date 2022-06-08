@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0x8207c1FfC5B6804F6024322CcF34F29c3541Ae26'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/o/_data_/img/1originprotocol.png
+    name: Origin Protocol
+    symbol: OGN
+    type: ERC20

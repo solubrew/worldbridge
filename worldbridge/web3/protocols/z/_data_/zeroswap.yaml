@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0x2eDf094dB69d6Dcd487f1B3dB9febE2eeC0dd4c5'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/z/_data_/img/1zeroswap.png
+    name: ZeroSwap
+    symbol: ZEE
+    type: ERC20

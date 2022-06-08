@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xFbEEa1C75E4c4465CB2FCCc9c6d6afe984558E20'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/d/_data_/img/1duckdaodime.png
+    name: DuckDaoDime
+    symbol: DDIM
+    type: ERC20

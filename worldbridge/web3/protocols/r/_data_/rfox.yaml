@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xa1d6Df714F91DeBF4e0802A542E13067f31b8262'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/r/_data_/img/1rfox.png
+    name: RFOX
+    symbol: RFOX
+    type: ERC20

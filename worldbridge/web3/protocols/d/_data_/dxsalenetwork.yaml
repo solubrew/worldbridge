@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xF063fE1aB7a291c5d06a86e14730b00BF24cB589'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/d/_data_/img/1dxsalenetwork.png
+    name: DxSale Network
+    symbol: SALE
+    type: ERC20

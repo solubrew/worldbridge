@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0x1985365e9f78359a9B6AD760e32412f4a445E862'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/a/_data_/img/1augur.png
+    name: Augur
+    symbol: REP
+    type: ERC20

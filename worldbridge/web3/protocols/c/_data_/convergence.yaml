@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xc834Fa996fA3BeC7aAD3693af486ae53D8aA8B50'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/c/_data_/img/1convergence.png
+    name: Convergence
+    symbol: CONV
+    type: ERC20

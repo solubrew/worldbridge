@@ -1,0 +1,35 @@
+---
+<(META)>:
+  docid: ''
+  name: 'Configuration YAML Document'
+  description: >
+  expirary: '<(VUR)>'  #Valid Until Replaced
+  version: '0.0.0.0.0.0'
+  path: ''
+  authority: 'document|this'
+  security: 'sec|lvl2'
+  <(WT)>: -32
+stake_tokens:
+  'eth':
+    'unersdl':
+      1:
+        address:
+    'unlink':
+      1:
+        address:
+    'uneth':
+      1:
+        address:
+    'unwbtc':
+      1:
+        address:
+token:
+  'eth':  #network
+    1:  #version
+      address: '0x5218E472cFCFE0b64A064F055B43b4cdC9EfD3A6'
+      chainId: 1
+      decimals: 18
+      logoURI: worldbridger/web3/protocols/u/_data_/img/1unfederalreserve.png
+      name: unFederalReserve
+      symbol: eRSDL
+      type: ERC20

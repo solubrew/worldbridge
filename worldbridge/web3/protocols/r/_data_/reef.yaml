@@ -1,0 +1,9 @@
+token:
+  1:
+    address: '0xFE3E6a25e6b192A42a44ecDDCd13796471735ACf'
+    chainId: 1
+    decimals: 18
+    logoURI: /mnt/iverse/nanoverse/data/DIM/Projects/Worldbridger/3_Work/1_DELTA/worldbridger/web3/protocols/r/_data_/img/1reef.png
+    name: Reef
+    symbol: REEF
+    type: ERC20

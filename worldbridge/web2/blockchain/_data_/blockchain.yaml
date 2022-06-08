@@ -1,0 +1,189 @@
+---
+'<(META)>':
+  docid: '<^(UUID)^>'
+  name:
+  description: >
+  expirary: '<[expiration]>'
+  version: '0.0.0.0.0.0'
+  path: '<[LEXIvrs]>'
+  outline:
+    MTA: '0000.0000.0000.----'
+    MTD: '0000.0000.0000.----'
+    MTF: '0000.0000.0000.----'
+    MTS: '0000.0000.0000.----'
+  authority: 'document|this'
+  security: 'sec|lvl2'
+  '<(WT)>': -32
+etherscan:
+  'db': 'BlockchainDR:ethereum'
+  api:
+    'url': 'https://api.etherscan.io/api?'
+    'key': <(USER_SESSION)>
+    'appname': <(USER_SESSION)>
+    parameters:
+  response:
+    status:
+    message:
+    result:
+  build:
+    1: 'module={module}&'  #address, contract, transaction, proxy
+    2: 'action={action}&'  #txlist, txlistinternal, tokentx, tokennfttx
+    3: 'address={address}&'
+    4: 'txhash={transaction}&'
+    5: 'startblock={startblock}&'  #need a block to time lookup table
+    6: 'endblock={endblock}&'
+    7: 'tags={tags}&'
+    8: 'page={page}&'
+    9: 'offset={offset}&'
+    10: 'sort={sort}&'
+    11: 'apikey={apikey}'
+  'endpoints':
+    'getABIsByAddresses':
+      'getabi':
+        description:
+        params:
+          module: 'contract'
+          'action': 'getabi'
+        seq: [1,2,3,11]
+        map:
+          abi: []
+    'getBalancesByAddresses':
+      description:
+      params:
+        module: account
+        action: 'balancemulti'
+        tags: latest
+      seq: [1,2,3,7,11]
+      map:
+    'getContractsByAddresses':
+      'getsourcecode':
+        description:
+        params:
+          module: contract
+          'action': 'getsourcecode'
+        seq: [1,2,3,11]
+        map:
+          'contractcode': ['SourceCode']
+          'abi': ['ABI']
+          'contractname': ['ContractName']
+          'compilerversion': ['CompilerVersion']
+          'optimizationused': ['OptimizationUsed']
+          'runs': ['Runs']
+          'constructorarguments': ['ConstructorArguments']
+          'evmversion': ['EVMVersion']
+          'library': ['Library']
+          'licensetype': ['LicenseType']
+          'proxy': ['Proxy']
+          'implementation': ['Implementation']
+          'swarmsource': ['SwarmSource']
+    'getLastBlockNumber':
+      'eth_blockNumber':
+        description:
+        args:
+        params:
+          'module': 'proxy'
+          'action': 'eth_blockNumber'
+        seq: [1,2,3,7,11]
+        map:
+    'getTrxsByAddresses':
+      'txlist':
+        description:
+        'args':
+          addresses:
+          actions:
+          sblock:
+        params:
+          module: account
+          'sort': 'asc'
+        seq: [1,2,3,5,6,8,9,10,11]
+        map:
+          'blocknumber': ['blockNumber']
+          'timestamp': ['timeStamp']
+          'hash': ['hash']
+          'nonce': ['nonce']
+          'blockhash': ['blockHash']
+          'transactionindex': ['transactionIndex']
+          'fromaddr': ['from']
+          'toaddr': ['to']
+          'value': ['value']
+          'gas': ['gas']
+          'gasprice': ['gasPrice']
+          'iserror': ['isError']
+          'txreceiptstatus': ['txreceipt_status']
+          'input': ['input']
+          'contractaddress': ['contractAddress']
+          'cumulativegasused': ['cumulativeGasused']
+          'gasused': ['gasUsed']
+      'txlistinternal':
+        description:
+        params:
+          module: account
+          'sort': 'asc'
+        seq: [1,2,3,5,6,8,9,10,11]
+        map:
+          'blocknumber': ['blockNumber']
+          'timestamp': ['timeStamp']
+          'hash': ['hash']
+          'fromaddr': ['from']
+          'toaddr': ['to']
+          'value': ['value']
+          'contract': ['contractAddress']
+          'input': ['input']
+          'type': ['call']
+          'gas': ['gas']
+          'iserror': ['isError']
+          'gasused': ['gasUsed']
+          'errcode': ['errCode']
+      'tokennfttx':
+        description:
+        params:
+          module: account
+          'sort': 'asc'
+        seq: [1,2,3,5,6,8,9,10,11]
+        map:
+          'blocknumber': ['blockNumber']
+          'timestamp': ['timeStamp']
+          'hash': ['hash']
+          'nonce': ['nonce']
+          'blockhash': ['blockHash']
+          'fromaddr': ['from']
+          'toaddr': ['to']
+          'tokenid': ['tokenID']
+          'tokenname': ['tokenName']
+          'token': ['tokenSymbol']
+          'precision': ['tokenDecimal']
+          'transactionindex': ['transactionIndex']
+          'gas': ['gas']
+          'gasprice': ['gasPrice']
+          'input': ['input']
+          'contractaddress': ['contractAddress']
+          'cumulativegasused': ['cumulativeGasused']
+          'gasused': ['gasUsed']
+          'confirmations': ['confirmations']
+      'tokentx':
+        description:
+        params:
+          module: account
+          'sort': 'asc'
+        seq: [1,2,3,5,6,8,9,10,11]
+        map:
+          'blocknumber': ['blockNumber']
+          'timestamp': ['timeStamp']
+          'hash': ['hash']
+          'nonce': ['nonce']
+          'blockhash': ['blockHash']
+          'fromaddr': ['from']
+          'toaddr': ['to']
+          'value': ['value']
+          'tokenname': ['tokenName']
+          'token': ['tokenSymbol']
+          'precision': ['tokenDecimal']
+          'transactionindex': ['transactionIndex']
+          'gas': ['gas']
+          'gasprice': ['gasPrice']
+          'input': ['input']
+          'contractaddress': ['contractAddress']
+          'cumulativegasused': ['cumulativeGasused']
+          'gasused': ['gasUsed']
+          'confirmations': ['confirmations']
+    'getTrxsByBlocks':
