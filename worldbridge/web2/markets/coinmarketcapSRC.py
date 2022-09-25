@@ -26,9 +26,9 @@ from pandas import DataFrame, Series
 #===============================================================================||
 from condor import condor
 from excalc import data as calcd
-from fxsquirl.orgnql import monql
+from squirl.orgnql import monql
 from subtrix import subtrix
-from worldbridger import worldbridger
+from worldbridge import worldbridge
 #===============================================================================||
 here = join(dirname(__file__),'')#												||
 there = abspath(join('../../..'))#												||set path at pheonix level
@@ -37,13 +37,13 @@ version = '0.0.0.0.0.0'#														||
 log = True
 #===============================================================================||
 pxcfg = f'{here}_data_/markets.yaml'#									||use default configuration
-class Data(worldbridger.stone):#																||
+class Data(worldbridge.stone):#																||
 	''' '''#							||
 	def __init__(self, cfg={}):#														||
 		''' '''#							||
 		self.config = condor.instruct(pxcfg).override(cfg)
 		self.config.select('coinmarketcap')
-		worldbridger.stone.__init__(self, self.config)#							||
+		worldbridge.stone.__init__(self, self.config)#							||
 	def getAllNow(self):#														||
 		'''Get current market data for all tokens'''
 		links = ['cryptocurrency', 'listings', 'latest']#											||

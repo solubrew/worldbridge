@@ -5,11 +5,8 @@
 	docid: 91438485-b6d5-44fc-a85b-3dba751b0a85
 	name:
 	description: >
-
 	expirary: <[expiration]>
-	Version: <[Version]>
-	path: <[LEXIvrs]>panda/LEXI/
-	outline: <[outline]>
+	version: <[Version]>
 	authority: document|this
 	security: sec|lvl2
 	<(WT)>: -32
@@ -37,26 +34,30 @@ from condor import condor
 from fxsquirl import collector
 #===============================================================================||
 here = join(dirname(__file__),'')#								||
-there = abspath(join('../../..'))#								||set path at pheonix level
-version = '0.0.0.0.0.0'#														||
+log = True
 #===============================================================================||
 pxcfg = join(abspath(here), '_data_/worldbridger.yaml')#								||use default configuration
+
 class stone(collector.engine):#
 	'Object controlling the groups of devices'
+
 	def __init__(self, cfg={}):#	||
 		''' '''
 		self.config = condor.instruct(pxcfg).override(cfg)
 		collector.engine.__init__(self, self.config)
+
 	def loadAPIKeys(self, keys):
 		'''Supply users API keys for the various services through the user
 			session configuration allow applications building on top of
 			worldbridger to supply these keys'''
 		self.apikeys = keys
 		return self
+
 	def fetchWebPage(self):
 		''' '''
 		self.html = monql.doc(path).read()
 		return self
+
 	def getAsset(self, url: str, mods: dict={}):
 		'''Download a specific asset..integrate video downloading tool...primarily
 			youtube_dl not sure if i need other tools for video....also integrate
@@ -74,6 +75,7 @@ class stone(collector.engine):#
 		if mods ['audio'] == True:
 			aud = ''
 		return self
+
 	def _crawltag(self, dikt):
 		'''Crawl through links to assign branch data to a column'''
 		for key in dikt:
@@ -81,6 +83,7 @@ class stone(collector.engine):#
 				self._crawltag(dikt[key])
 			else:
 				return dikt[key]
+
 #==============================Source Materials=================================||
 '''
 https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=YOUR_API_KEY

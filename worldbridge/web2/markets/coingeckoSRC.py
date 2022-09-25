@@ -20,12 +20,12 @@
 from os.path import abspath, dirname, join
 import time
 #===============================================================================||
-from worldbridger.libs import DataFrame, profile
+from worldbridge.libs import DataFrame, profile
 #===============================================================================||
 from condor import condor
 from condor.thing import what, when
 from excalc import data as calcd, ts as calcts
-from worldbridger import worldbridger, runProfile
+from worldbridge import worldbridge, runProfile
 #===============================================================================||
 here = join(dirname(__file__),'')#												||
 there = abspath(join('../../..'))#												||set path at pheonix level
@@ -34,11 +34,11 @@ version = '0.0.0.0.0.0'#														||
 log = True
 #===============================================================================||
 pxcfg = f'{here}_data_/markets.yaml'#									||use default configuration
-class Data(worldbridger.stone):
+class Data(worldbridge.stone):
 	def __init__(self, cfg: dict={}):
 		''' '''
 		self.config = condor.instruct(pxcfg).select('coingecko')
-		worldbridger.stone.__init__(self, self.config)
+		worldbridge.stone.__init__(self, self.config)
 		self.config.override(cfg)
 	def getEvents():
 		'''Events doesn't have any data'''
@@ -85,7 +85,7 @@ class Data(worldbridger.stone):
 						status = self.getEP(params, links, ['tickers'], name)
 						if not status:
 							break
-						if log: print('DFS', self.sinkdfs.keys())
+						#if log: print('DFS', self.sinkdfs.keys())
 						if self.yieldBreak(self, name, params['offset']):
 							break
 						yield self
@@ -152,7 +152,7 @@ def collectPricesByExchangesByTokens(db: str, table: str, exchanges: list=[],
 		date = when().today
 		db = db.replace('{date}', date)
 		if log: print('DB', db, date)
-	src = Data().initSelector('getPricesByExchangesByTokens', 'methodify', table)
+	src = Data().initSource('getPricesByExchangesByTokens', 'methodify', table)
 	src.initSink(db, 'db', table)
 	src.setReader({'exchanges': exchanges, 'tokens': tokens, 'name': table}, table)
 	src.collect(table)

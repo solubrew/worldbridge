@@ -14,8 +14,6 @@
 
 	expirary: '<[expiration]>'  #												||
 	version: '<[version]>'  #													||
-	path: '<[LEXIvrs]>'  #														||
-	outline: <[outline]>'  #													||
 	authority: 'document|this'  #												||
 	security: 'sec|lvl2'  #														||
 	<(WT)>: -32  #																||
@@ -29,19 +27,19 @@ import json, time, inspect
 #===============================================================================||
 from condor import condor
 from excalc import tree as calctr
-from fxsquirl.orgnql import sonql#this should be replaced by collector actions
+from squirl.orgnql import sonql#this should be replaced by collector actions
 from worldbridge import worldbridge
 from worldbridge.web3.chains import ethereum as eth
 #===============================================================================||
 here = join(dirname(__file__),'')#												||
-there = join(dirname(__file__))
-where = abspath(join('..'))#													||set path at pheonix level
-version = '0.0.0.0.0.0'#														||
 log = False
 #===============================================================================||
 pxcfg = join(abspath(here), '_data_/blockchain.yaml')#									||use default configuration
+
+
 class Data(worldbridge.stone):
 	'''Etherscan Data Source'''
+
 	def __init__(self, cfg: dict={}):
 		''' '''
 		self.config = condor.instruct(pxcfg).override(cfg).select('etherscan')
@@ -106,6 +104,7 @@ class Data(worldbridge.stone):
 			print('Last Block retreival failed due to',e)
 			self.lastblocknumber = 9999999
 		return self
+
 	def getLastBlocks(self, state: str='stale'):
 		'''Get the Last Block Number for the appropriate datasource based on
 		 	request parameters
@@ -117,6 +116,7 @@ class Data(worldbridge.stone):
 		dfn = list(data.dfs.keys())[0]
 		self.lastblocks = data.dfs[dfn]
 		return self
+
 	def getSupplyByTokens(self, tokens: list):
 		''' '''
 		if len(tokens) > 1 and tokens[0] != 'ETH':
@@ -139,6 +139,7 @@ class Data(worldbridge.stone):
 		if tokens != []:
 			bys = {'contractaddress': addresses}
 			return self.processEPetherscan(bys, params, actions)
+
 	def getTrxsByAddresses(self, addresses: list, startblock=0, action='txlist',
 												name='base', altercols=None):#	||
 		'''Get account data from etherscan using the account module by list of
@@ -158,6 +159,7 @@ class Data(worldbridge.stone):
 		load = [bys, params, action, cfgn, name, lastblocks, altercols]
 		if log: print('TRXS params', params, bys)
 		return self.processEPetherscan(*load)
+
 	def getTrxsByBlocks(self, blocks: list, altercols=None):
 		''' '''
 		params = {'module': 'proxy'}#											||
@@ -165,6 +167,7 @@ class Data(worldbridge.stone):
 		name = inspect.currentframe().f_code.co_name
 		bys = {'blocknumber': blocks}
 		return self.processEPetherscan(bys, params, actions, name)
+
 	def getTrxByContracts(self, contracts: list, how: list=['full'],
 															altercols=None):#	||
 		'''Get contract data from etherscan using the contract module'''
@@ -173,6 +176,7 @@ class Data(worldbridge.stone):
 		bys = {'contract': contracts}
 		name = inspect.currentframe().f_code.co_name
 		return self.processEPetherscan(bys, params, actions)
+
 	def processEPetherscan(self, pterms: dict, params: dict={}, action: list=[],
 						cfgn=None, name=None, lastblocks={}, altercols={}):#	||
 		'''Generic process for paging through etherscan data
@@ -219,50 +223,70 @@ class Data(worldbridge.stone):
 						break
 			params.pop(category)
 		yield self
+
+
 def collectABIsByAddresses(db, table, addresses):
 	''' '''
 	params = {'addresses': addresses}
 	runCollector('getABIsByAddresses', db, params, table)
+
+
 def collectAllTrxs():
 	''' '''
 	runCollector()
+
+
 def collectBalancesByAddresses(db, table, addresses):
 	''' '''
 	params = {'addresses': addresses}
 	runCollector('getBalancesByAddresses', db, params, table)
+
+
 def collectBlocks(db: str, table: str, blocks: list):
 	''' '''
 	params = {'blocks': blocks}
 	runCollector('getTrxsByBlocks', db, params, table)
+
+
 def collectSupplyByTokens(db: str, table: str, tokens: list):
 	''' '''
 	params = {}
 	runCollector('getSupplyByTokens', db, params, table)
+
+
 def collectTransactionsByBlocks(db: str, table: str, blocks: list):
 	''' '''
 	params = {'filters': {'IN': {'blocks', blocks}}}
 	runCollector('getTrxsByBlocks', db, params, table)#								||
+
+
 def collectTransactionsByContracts(db: str, table: str, contracts: list):
 	''' '''
 	params = {'filters': {'IN': {'contracts': contracts}}}
 	runCollector('getTrxsByContracts', db, params, table)
+
+
 def collectTransactionsByTransactions(db: str, table: str, transactions: list):
 	''' '''
 	params = {'filters': {'IN': {'transactions': transactions}}}
 	runCollector('getTrxsByTransactions', db, params, table)
+
+
 def runCollector(process, db, params, table, altercols=None):
 	'''Run the basic sequence for collecting data from this specific source
 		type'''
 	fx = Data()
 	fx.initCollector(process, 'methodify', 'etherscan', db, 'db', table)
 	fx.setReader(params, 'etherscan', altercols).collect(table)
-'''
 
+
+#==============================Source Materials=================================||
+'''
 https://pypi.org/project/py-etherscan-api/
 https://api.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=YourApiKeyToken
 https://pypi.org/project/etherscan/
 https://github.com/corpetty/py-etherscan-api
 https://sebs.github.io/etherscan-api/
 https://etherscan.io/apis
-
 '''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||

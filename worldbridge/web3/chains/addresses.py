@@ -33,10 +33,8 @@ from web3 import Web3, HTTPProvider
 from web3.middleware import construct_sign_and_send_raw_middleware
 #===============================================================================||
 from condor import condor#										||
-
-from fxsquirl import fxsquirl
-from fxsquirl.orgnql import sonql
-
+from squirl import squirl
+from squirl.orgnql import sonql
 from worldbridge import worldbridge
 from worldbridge.web3.chains import ethereum as eth
 from worldbridge.web3.protocols.protocols import BASE
@@ -44,12 +42,11 @@ AddressLike = Union[Address, ChecksumAddress, ENS]
 _netid_to_name = {1: "mainnet", 4: "rinkeby"}
 #===============================================================================||
 here = join(dirname(__file__),'')#												||
-there = abspath(join('../../..'))#												||set path at pheonix level
-where = abspath(join(''))#														||set path at pheonix level
-version = '0.0.0.0.0.0'#														||
 log = True
 #===============================================================================||
 pxcfg = join(abspath(here), '_data_/address.yaml')
+
+
 class AddrO(BASE):
 	'''Addresse Object for supplying various configurations of an address as
 		needed'''
@@ -181,3 +178,11 @@ def makeStringAddress(a: AddressLike, chainid=1, data=None) -> str:
 def _validate_address(a: AddressLike) -> None:
 	''' '''
 	assert _addr_to_str(a)
+
+
+
+#==============================Source Materials=================================||
+'''
+
+'''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||

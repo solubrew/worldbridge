@@ -20,13 +20,13 @@ try:
 	from json.decoder import JSONDecodeError
 except ImportError:
 	JSONDecodeError = ValueError
-
-logger = logging.getLogger(__name__)
+#===============================================================================||
+from selena import selena
 #===============================================================================||
 here = join(dirname(__file__),'')#						||
-there = abspath(join('../../..'))#						||set path at pheonix level
 log = False
 #===============================================================================||
+pxcfg = join(abspath(here), '_data_', 'utils')
 
 def parse_datetime_string(s):
 	if s is None:

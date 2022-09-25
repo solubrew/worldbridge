@@ -43,9 +43,7 @@ from sha3 import keccak_256
 from coincurve import PublicKey
 #===============================================================================||
 from condor import condor#										||
-
 from fxsquirl import fxsquirl
-
 from worldbridge import worldbridge
 from worldbridge.web2.blockchain import etherscan
 from worldbridge.web3.chains import addresses, connect
@@ -53,16 +51,15 @@ from worldbridge.web3.protocols import protocols
 from worldbridge.web3 import utils
 #===============================================================================||
 here = join(dirname(__file__),'')#												||
-there = abspath(join('../../..'))#												||set path at pheonix level
-where = abspath(join(''))#														||set path at pheonix level
-version = '0.0.0.0.0.0'#														||
 AddressLike = Union[Address, ChecksumAddress, ENS]
 log = True
 #===============================================================================||
 pxcfg = join(abspath(here), '_data_/evm.yaml')
+
 class EVMViewer(worldbridge.stone):
 	'''The viewer provides methods to view aspects about the contracts and/or
 		addresses loaded into the instance'''
+
 	def __init__(self, network=1, w3=None, store=None, cfg={}):
 		''' '''
 		self.config = condor.instruct(pxcfg).select('ethereum')#.select('ethereum').override(cfg)
