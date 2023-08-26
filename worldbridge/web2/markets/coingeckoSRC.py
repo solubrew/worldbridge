@@ -96,6 +96,7 @@ class Data(worldbridge.stone):
 			if exchanges == [] or exchanges == None:
 				break
 		yield self
+
 	def getHistoryByTickerByDate(self, slugs: list=[], sdate: str=None,
 											edate: str=None, name: str='base'):
 		'''History end point returns 1 day at a time....grab a large portion of
@@ -123,12 +124,15 @@ class Data(worldbridge.stone):
 					params['page'] += 1
 				time.sleep(5)#limit requests due to api level
 		yield self
+
 	def getOHLCByTickerByDate(self, tokens: list=[]):
 		''' '''
 		links = ['{coinid}', 'ohlc?vs_currency={base}', '&days={days}']
 		return self.df
+
 	def getPriceByTicker(tickers: list=[]):
 		''' '''
+
 	def getTickers(self, links: list=[], tokens: list=[]):#						||
 		'''Get endpoint by suppling various variables to complete the url'''#	||
 		self.buildEndPoint(links)#												||
@@ -143,6 +147,7 @@ class Data(worldbridge.stone):
 				params = {'token': token}
 				self.getEP(params)
 			tokens = []
+
 def collectPricesByExchangesByTokens(db: str, table: str, exchanges: list=[],
 															tokens: list=[]):#	||
 	''' '''
@@ -156,6 +161,7 @@ def collectPricesByExchangesByTokens(db: str, table: str, exchanges: list=[],
 	src.initSink(db, 'db', table)
 	src.setReader({'exchanges': exchanges, 'tokens': tokens, 'name': table}, table)
 	src.collect(table)
+
 #@runProfile()
 def collectPriceHistoryByDateByTokens(db: str, table: str, start: str,
 													end: str, tokens: list=[]):

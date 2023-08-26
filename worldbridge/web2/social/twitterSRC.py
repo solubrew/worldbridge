@@ -44,12 +44,15 @@ class src(object):
 			self.wrtr = wrtr
 		else:
 			self.wrtr = store
+
 	def buildSearchRequest(self):
 		''' '''
 		return self
+
 	def buildTweetDataTable(self):
 		''' '''
 		return self
+
 	def getTweets(self, cfg):#												||
 		'''Process Stock Generator Calendar data and either store returned data
 			or yield it to caller'''
@@ -59,9 +62,11 @@ class src(object):
 				break
 			yield self
 		yield self
+
 	def getUsers(self):
 		''' '''
 		return self
+
 	def getTerms(self, cfg):
 		'''Get Search Terms from database defined by configuration dictionary'''
 		if 'page' not in cfg.keys():
@@ -90,6 +95,7 @@ class src(object):
 				setattr(self, out, data)
 				yield self
 		yield self
+
 def proc(rdr, out):
 	'''Process Stock Objects generated from paging thru tickers data'''
 	columns = ['searchterm', 'date', 'full_text', 'hashtags', 'user', 'media',
@@ -113,6 +119,7 @@ def proc(rdr, out):
 							tweet.possibly_sensitive, tweet.place, tweet.geo])
 		yield DataFrame(results, columns=columns)
 	yield data
+
 def store(df, cfg):
 	''' '''
 	try:#																||

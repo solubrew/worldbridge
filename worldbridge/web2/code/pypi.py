@@ -22,7 +22,7 @@ here = join(dirname(__file__),'')#												||
 there = abspath(join('../../..'))#												||set path at pheonix level
 log = True#																		||
 #===============================================================================||
-pxcfg = join(abspath(here), '_data_/gitlab.yaml')
+pxcfg = join(abspath(here), '_data_', 'pypi.yaml')
 
 def release():
 	if log: print('Working Directory', f'{self.path}/5_OMEGA/{self.operation}')

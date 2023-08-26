@@ -1,0 +1,50 @@
+
+live:
+  api:
+    url: 'https://openapi-v2.kucoin.com'
+    key:
+    appname:
+    parameters:
+      secret:
+      passphrase:
+    headers:
+      'Accept': 'application/json'
+      'User-Agent': 'python-kucoin'
+      'KC-API-KEY':
+      'KC-API-PASSPHRASE':
+    version: 'v1'
+sandbox:
+  api:
+    url: 'https://openapi-sandbox.kucoin.com'
+    key:
+    appname:
+    parameters:
+      secret:
+      passphrase:
+    headers:
+      'Accept': 'application/json'
+      'User-Agent': 'python-kucoin'
+      'KC-API-KEY':
+      'KC-API-PASSPHRASE':
+    version: 'v1'
+	REST_API_URL =
+	SANDBOX_API_URL =
+	API_VERSION = 'v1'
+	SIDE_BUY = 'buy'
+	SIDE_SELL = 'sell'
+	ACCOUNT_MAIN = 'main'
+	ACCOUNT_TRADE = 'trade'
+	ORDER_LIMIT = 'limit'
+	ORDER_MARKET = 'market'
+	ORDER_LIMIT_STOP = 'limit_stop'
+	ORDER_MARKET_STOP = 'market_stop'
+	STOP_LOSS = 'loss'
+	STOP_ENTRY = 'entry'
+	STP_CANCEL_NEWEST = 'CN'
+	STP_CANCEL_OLDEST = 'CO'
+	STP_DECREASE_AND_CANCEL = 'DC'
+	STP_CANCEL_BOTH = 'CB'
+	TIMEINFORCE_GOOD_TILL_CANCELLED = 'GTC'
+	TIMEINFORCE_GOOD_TILL_TIME = 'GTT'
+	TIMEINFORCE_IMMEDIATE_OR_CANCEL = 'IOC'
+	TIMEINFORCE_FILL_OR_KILL = 'FOK'
