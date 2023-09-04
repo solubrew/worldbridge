@@ -25,7 +25,7 @@ from eth_account.signers.local import LocalAccount
 from eth_account.account import Account
 from eth_typing import AnyAddress
 from eth_utils import is_same_address
-from web3.contract import ContractFunction
+#from web3.contract import ContractFunction
 from web3.eth import Contract
 from web3.types import TxParams, Wei, Address, ChecksumAddress,	ENS, Nonce
 from web3.types import HexBytes
@@ -160,13 +160,13 @@ def makeStringAddress(a: AddressLike, chainid=1, data=None) -> str:
 	'''Make String Address '''
 	if isinstance(a, bytes):
 		# Address or ChecksumAddress
-		addr: str = Web3.toChecksumAddress("0x" + bytes(a).hex())
+		addr: str = Web3.to_checksum_address("0x" + bytes(a).hex())
 	elif isinstance(a, str):
 		if a.endswith(".eth"):
 			# Address is ENS
 			raise Exception("ENS not supported for this operation")
 		elif a.startswith("0x"):
-			addr = Web3.toChecksumAddress(a)
+			addr = Web3.to_checksum_address(a)
 		elif len(a) < 10:
 			addr = lookupAddress(a, chainid, data)
 		else:

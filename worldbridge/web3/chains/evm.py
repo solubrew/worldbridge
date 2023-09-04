@@ -32,14 +32,18 @@ from eth_account.signers.local import LocalAccount
 from eth_account.account import Account
 from eth_typing import AnyAddress
 from eth_utils import is_same_address
-from web3.contract import ContractFunction
+#from web3.contract import ContractFunction
 from web3.eth import Contract
 from web3.types import TxParams, Wei, Address, ChecksumAddress,	ENS, Nonce
 from web3.types import HexBytes
 from web3 import Web3, HTTPProvider
 from web3.middleware import construct_sign_and_send_raw_middleware
 from secrets import token_bytes
-from sha3 import keccak_256
+try:
+	from sha3 import keccak_256
+except:
+	print('No Sha3 import')
+import hashlib
 from coincurve import PublicKey
 #===============================================================================||
 from condor import condor#										||
@@ -327,9 +331,11 @@ class EVMWriter(EVMReader):
 
 def createPrivateKey():
 	'''Generate a Private Key, Address key set'''
-	pkey = keccak_256(token_bytes(32)).digest()
+	#pkey = keccak_256(token_bytes(32)).digest()
+	pkey = hashlib.sha_256(token_bytes(32)).digest()
 	public = PublicKey.from_valid_secret(pkey).format(compressed=False)[1:]
-	addr = keccak_256(public).digest()[-20:].hex()
+	#addr = keccak_256(public).digest()[-20:].hex()
+	addr = haslib.sha_256(public).digest()[-20:].hex()
 	return pkey.hex(), addr
 
 #===========================Code Source Examples================================||
