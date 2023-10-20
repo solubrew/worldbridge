@@ -233,11 +233,15 @@ class EVMViewer(worldbridge.stone):
 
 	def _combineTransactions(self, c='eth'):
 		''' '''
-		self.trxs = self.blockprovider[c].cache.store[f'trxs_{c}']
+		try:
+			self.trxs = self.blockprovider[c].cache.store[f'trxs_{c}']
+		except Exception as e:
+			self.trxs = DataFrame()
 		self.itrxs = self.blockprovider[c].cache.store[f'itrxs_{c}']
 		self.erc20trxs = self.blockprovider[c].cache.store[f'erc20trxs_{c}']
 		self.erc721trxs = self.blockprovider[c].cache.store[f'erc721trxs_{c}']
 		df = concat([self.trxs, self.itrxs, self.erc20trxs, self.erc721trxs])
+		df.to_csv('/home/solubrew/Downloads/2022_trxs.csv')
 		return df
 
 	def _extractTokens(self, c):

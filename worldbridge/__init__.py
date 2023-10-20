@@ -17,8 +17,7 @@
 #=======================================================================||
 from os.path import abspath, dirname, join
 #===============================================================================||
-from condor import condor, thing#										||
-from subtrix import subtrix
+from subtrix import thing#										||
 #===============================================================================||
 here = join(dirname(__file__),'')#												||
 there = abspath(join('../../..'))#												||set path at pheonix level

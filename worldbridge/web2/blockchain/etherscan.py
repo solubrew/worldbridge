@@ -32,7 +32,7 @@ from worldbridge import worldbridge
 from worldbridge.web3.chains import ethereum as eth
 #===============================================================================||
 here = join(dirname(__file__),'')#												||
-log = False
+log = True
 #===============================================================================||
 pxcfg = join(abspath(here), '_data_/blockchain.yaml')#									||use default configuration
 
@@ -149,7 +149,8 @@ class Data(worldbridge.stone):
 		#lastblocks = dict(zip(lb['address'], lb['max']))
 		lastblocks = {}
 		params = {'module': 'account', 'startblock': startblock}#				||
-		bys = {'address': [x for x in addresses if x != '']}# sanitization process
+		bys = {'address': [x for x in addresses if x in ('', 0)]}# sanitization process
+		bys = {'address': '0xBd05fEf925Ed08C9cC3F60126D376D9048dc1407'}
 		cfgn = inspect.currentframe().f_code.co_name
 		if name == 'base':
 			try:
@@ -188,6 +189,9 @@ class Data(worldbridge.stone):
 		self.buildEndPoint(cfg[cfgn][action]['seq'], 'seq')
 		params['sort'] = 'asc'
 		for category in pterms.keys():
+			print('Catogeory', category, pterms[category])
+			if not isinstance(pterms[category], list):
+				pterms[category] = [pterms[category]]
 			for term in pterms[category]:#														||Terms represents controlling mechanism
 				if log: print('TERM', term)
 				params['startblock'] = 0
