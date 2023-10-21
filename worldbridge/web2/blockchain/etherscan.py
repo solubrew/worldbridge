@@ -1,4 +1,4 @@
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
 '''  #																			||
 ---  #																			||
 <(META)>:  #																	||
@@ -17,30 +17,31 @@
 	authority: 'document|this'  #												||
 	security: 'sec|lvl2'  #														||
 	<(WT)>: -32  #																||
-''' #																			||
+'''  # ||
 # -*- coding: utf-8 -*-#														||
-#==================================Core Modules=================================||
+# ==================================Core Modules=================================||
 from os.path import abspath, dirname, join
 from pandas import concat, DataFrame
 from requests import get, Request, Session
 import json, time, inspect
-#===============================================================================||
+# ===============================================================================||
 from condor import condor
 from excalc import tree as calctr
-from squirl.orgnql import sonql#this should be replaced by collector actions
+from squirl.orgnql import sonql  # this should be replaced by collector actions
 from worldbridge import worldbridge
 from worldbridge.web3.chains import ethereum as eth
-#===============================================================================||
-here = join(dirname(__file__),'')#												||
+
+# ===============================================================================||
+here = join(dirname(__file__), '')  # ||
 log = True
-#===============================================================================||
-pxcfg = join(abspath(here), '_data_/blockchain.yaml')#									||use default configuration
+# ===============================================================================||
+pxcfg = join(abspath(here), '_data_/blockchain.yaml')  # ||use default configuration
 
 
 class Data(worldbridge.stone):
 	'''Etherscan Data Source'''
 
-	def __init__(self, cfg: dict={}):
+	def __init__(self, cfg: dict = {}):
 		''' '''
 		self.config = condor.instruct(pxcfg).override(cfg).select('etherscan')
 		worldbridge.stone.__init__(self, self.config)
@@ -53,7 +54,7 @@ class Data(worldbridge.stone):
 		val = ''
 		for x in addresses:
 			val += f'{x},'
-		val = val[:len(val)-1]
+		val = val[:len(val) - 1]
 		params = {'module': 'account', 'tag': 'latest', 'apikey': self.apikey}
 		name = inspect.currentframe().f_code.co_name
 		load = [{'address': val}, params, actions, {}, name]
@@ -63,25 +64,25 @@ class Data(worldbridge.stone):
 		''' '''
 		bys = {'address': addresses}
 		params = {'module': 'contract'}
-		action = 'getabi'#														||
+		action = 'getabi'  # ||
 		name = inspect.currentframe().f_code.co_name
 		return self.processEPetherscan(bys, params, action, name)
 
 	def getContractsByAddresses(self, addresses: list, action='getsourcecode',
-																name='base'):#	||
+	                            name='base'):  # ||
 		''' '''
-#		print('Get Contract for Addresses', addresses)
+		#		print('Get Contract for Addresses', addresses)
 		bys = {'address': addresses}
 		params = {'module': 'contract', }
 		cfgn = inspect.currentframe().f_code.co_name
 		return self.processEPetherscan(bys, params, action, cfgn, name)
 
-	def getLastBlock(self, state: str='live'):
+	def getLastBlock(self, state: str = 'live'):
 		'''Get Last Block of Transactions '''
-		self.getTrxsByBlocks([self.getLastBlockNumber(state)])#			||
+		self.getTrxsByBlocks([self.getLastBlockNumber(state)])  # ||
 		return self.df
 
-	def getLastBlockNumber(self, state: str='stale'):
+	def getLastBlockNumber(self, state: str = 'stale'):
 		'''Get the Last Block Number for the appropriate datasource based on
 		 	request parameters'''
 		self.state = state
@@ -89,29 +90,30 @@ class Data(worldbridge.stone):
 			if state == 'stale':
 				data = next(sonql.doc(self.db).read({'views': ['lastblocknumber']}))
 				dfn = list(data.dfs.keys())[0]
-				self.lastblocknumber = data.dfs[dfn]['blocknumber'][0]#get latest blocknumber from reposoitry system...
-				#not sure if this is needed....or should it be provided by the requestor
-				#....ties in data source more closely but helps with requests from me
-				#shoudl probably be provided
+				self.lastblocknumber = data.dfs[dfn]['blocknumber'][
+					0]  # get latest blocknumber from reposoitry system...
+			# not sure if this is needed....or should it be provided by the requestor
+			# ....ties in data source more closely but helps with requests from me
+			# shoudl probably be provided
 			elif state == 'live':
 				params = {'module': 'proxy', 'action': 'eth_blockNumber'}
 				process = self.processEPetherscan({'address': addresses}, params, actions)
-				self.lastblocknumber = next(process).df['blocknumber']#				||get latest blocknumber from etherscan
+				self.lastblocknumber = next(process).df['blocknumber']  # ||get latest blocknumber from etherscan
 			else:
 				if self.lastblocknumber == None:
 					self.lastblocknumber = 9999999
 		except Exception as e:
-			print('Last Block retreival failed due to',e)
+			print('Last Block retreival failed due to', e)
 			self.lastblocknumber = 9999999
 		return self
 
-	def getLastBlocks(self, state: str='stale'):
+	def getLastBlocks(self, state: str = 'stale'):
 		'''Get the Last Block Number for the appropriate datasource based on
 		 	request parameters
 			'''
-#		self.setReader('etherscan', {'views': ['lastblockbyaddress_a000']})
-#		self.extract(['address', 'type', 'max'])
-#		self.lastblocks = self.dataset
+		#		self.setReader('etherscan', {'views': ['lastblockbyaddress_a000']})
+		#		self.extract(['address', 'type', 'max'])
+		#		self.lastblocks = self.dataset
 		data = next(sonql.doc(self.db).read({'views': ['lastblockbyaddress_a000']}))
 		dfn = list(data.dfs.keys())[0]
 		self.lastblocks = data.dfs[dfn]
@@ -141,15 +143,15 @@ class Data(worldbridge.stone):
 			return self.processEPetherscan(bys, params, actions)
 
 	def getTrxsByAddresses(self, addresses: list, startblock=0, action='txlist',
-												name='base', altercols=None):#	||
+	                       name='base', altercols=None):  # ||
 		'''Get account data from etherscan using the account module by list of
-			addresses from a specific block forward'''#		||
-		#self.getLastBlocks()
-		#lb = self.lastblocks[self.lastblocks['type'] == 'tokentx']#need to work this in with action
-		#lastblocks = dict(zip(lb['address'], lb['max']))
+			addresses from a specific block forward'''  # ||
+		# self.getLastBlocks()
+		# lb = self.lastblocks[self.lastblocks['type'] == 'tokentx']#need to work this in with action
+		# lastblocks = dict(zip(lb['address'], lb['max']))
 		lastblocks = {}
-		params = {'module': 'account', 'startblock': startblock}#				||
-		bys = {'address': [x for x in addresses if x in ('', 0)]}# sanitization process
+		params = {'module': 'account', 'startblock': startblock}  # ||
+		bys = {'address': [x for x in addresses if x in ('', 0)]}  # sanitization process
 		bys = {'address': '0xBd05fEf925Ed08C9cC3F60126D376D9048dc1407'}
 		cfgn = inspect.currentframe().f_code.co_name
 		if name == 'base':
@@ -163,36 +165,36 @@ class Data(worldbridge.stone):
 
 	def getTrxsByBlocks(self, blocks: list, altercols=None):
 		''' '''
-		params = {'module': 'proxy'}#											||
+		params = {'module': 'proxy'}  # ||
 		actions = ['eth_getBlockByNumber']
 		name = inspect.currentframe().f_code.co_name
 		bys = {'blocknumber': blocks}
 		return self.processEPetherscan(bys, params, actions, name)
 
-	def getTrxByContracts(self, contracts: list, how: list=['full'],
-															altercols=None):#	||
+	def getTrxByContracts(self, contracts: list, how: list = ['full'],
+	                      altercols=None):  # ||
 		'''Get contract data from etherscan using the contract module'''
-		params = {'module': 'contract'}#										||
+		params = {'module': 'contract'}  # ||
 		actions = []
 		bys = {'contract': contracts}
 		name = inspect.currentframe().f_code.co_name
 		return self.processEPetherscan(bys, params, actions)
 
-	def processEPetherscan(self, pterms: dict, params: dict={}, action: list=[],
-						cfgn=None, name=None, lastblocks={}, altercols={}):#	||
+	def processEPetherscan(self, pterms: dict, params: dict = {}, action: list = [],
+	                       cfgn=None, name=None, lastblocks={}, altercols={}):  # ||
 		'''Generic process for paging through etherscan data
 			make this as generic as possible while maintianing etherscan functionality		'''
 		cfg = self.config.dikt['endpoints']
 		if cfgn == None:
-			cfgn = inspect.currentframe().f_back.f_code.co_name# gets the caller of the method
-		#builds the endpoint template that will be used
+			cfgn = inspect.currentframe().f_back.f_code.co_name  # gets the caller of the method
+		# builds the endpoint template that will be used
 		self.buildEndPoint(cfg[cfgn][action]['seq'], 'seq')
 		params['sort'] = 'asc'
 		for category in pterms.keys():
 			print('Catogeory', category, pterms[category])
 			if not isinstance(pterms[category], list):
 				pterms[category] = [pterms[category]]
-			for term in pterms[category]:#														||Terms represents controlling mechanism
+			for term in pterms[category]:  # ||Terms represents controlling mechanism
 				if log: print('TERM', term)
 				params['startblock'] = 0
 				params[category] = term
@@ -201,11 +203,11 @@ class Data(worldbridge.stone):
 					params['startblock'] = lastblocks[term]
 				if 'endblock' not in params.keys():
 					params['endblock'] = int(9e9)
-				#********BUG****************merge is not accepting new action paramter override
+				# ********BUG****************merge is not accepting new action paramter override
 				params['action'] = action
-				#*******************************
+				# *******************************
 				spage, npages, step = 0, 0, 10000
-				for key, val in params.items():#this is forcing an override due to some failure in the override function
+				for key, val in params.items():  # this is forcing an override due to some failure in the override function
 					self.parameters.it[key] = val
 				self.parameters.merge(params, None, ':::ROOT:::', 'override')
 				params = self.parameters.it
@@ -214,7 +216,7 @@ class Data(worldbridge.stone):
 				while True:
 					params['page'] = page
 					load = [params, [cfgn, action], ['result'], name,
-															altercols, step]#	||
+					        altercols, step]  # ||
 
 					self.status = self.getEP(*load)
 					if not self.status:
@@ -261,7 +263,7 @@ def collectSupplyByTokens(db: str, table: str, tokens: list):
 def collectTransactionsByBlocks(db: str, table: str, blocks: list):
 	''' '''
 	params = {'filters': {'IN': {'blocks', blocks}}}
-	runCollector('getTrxsByBlocks', db, params, table)#								||
+	runCollector('getTrxsByBlocks', db, params, table)  # ||
 
 
 def collectTransactionsByContracts(db: str, table: str, contracts: list):
@@ -284,7 +286,7 @@ def runCollector(process, db, params, table, altercols=None):
 	fx.setReader(params, 'etherscan', altercols).collect(table)
 
 
-#==============================Source Materials=================================||
+# ==============================Source Materials=================================||
 '''
 https://pypi.org/project/py-etherscan-api/
 https://api.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=YourApiKeyToken
@@ -293,4 +295,4 @@ https://github.com/corpetty/py-etherscan-api
 https://sebs.github.io/etherscan-api/
 https://etherscan.io/apis
 '''
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||

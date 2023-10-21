@@ -1,5 +1,5 @@
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
-'''  #																			||
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
+"""  #																			||
 ---  #																			||
 <(META)>:  #																	||
 	docid:   #																	||
@@ -12,29 +12,32 @@
 	authority: document|this  #													||
 	security: sec|lvl2  #														||
 	<(WT)>: -32  #																||
-''' #																			||
+"""  # ||
 # -*- coding: utf-8 -*-#														||
-#================================Core Modules===================================||
-import json, time, logging, functools
-from os.path import abspath, dirname, join#										||
-from os import listdir
-import sys, types#																||
-from typing import List, Any, Optional, Callable, Union, Tuple, Dict
-#===============================================================================||
+# ================================Core Modules===================================||
+import json
+from os.path import abspath, dirname, join  # ||
+
+# ===============================================================================||
 from condor import condor
 from worldbridge.web3.chains import addresses, evm
-from worldbridge import worldbridge
-#===============================================================================||
-#===============================================================================||
-here = join(dirname(__file__),'')#												||
-there = abspath(join('../../..'))#												||set path at pheonix level
-where = abspath(join(''))#														||set path at pheonix level
-version = '0.0.0.0.0.0'#														||
+# ===============================================================================||
+here = join(dirname(__file__), '')  # ||
+there = abspath(join('../../..'))  # ||set path at pheonix level
+where = abspath(join(''))  # ||set path at pheonix level
+version = '0.0.0.0.0.0'  # ||
 log = True
-#===============================================================================||
+# ===============================================================================||
 pxcfg = join(abspath(here), '_data_/protocols.yaml')
+
+
 class BASE(object):
-	'''Base Blockchain Object that provides a connection to an evm interface '''
+	"""Base Blockchain Object providing all low level blockchain protocol
+	connections and assets.  These include
+		VM connections:
+		Address Handling:
+	"""
+
 	def __init__(self, cfg={}):
 		''' '''
 		self.config = condor.instruct(pxcfg).override(cfg)
@@ -42,13 +45,13 @@ class BASE(object):
 		self.addresses = {}
 
 	def connectEVM(self, view=1, read=0, write=0, network=1):
-		'''A veiw connection provides EVM data and metadata about contracts
+		"""A veiw connection provides EVM data and metadata about contracts
 			a read connection provides EVM data via contract specific functions
 			a write connection provides EVM access to write onchain data
 
 			Initialize a web3 connection for the address object by either
 			providing one from the requesting function or intializing a new
-			one'''
+			one"""
 		if write == 1:
 			self.evm = evm.EVMWriter(network, None, None, self.config)
 		elif read == 1:
@@ -58,12 +61,15 @@ class BASE(object):
 		self.w3 = self.evm.w3
 		return self
 
-	def initAddress(self, addr:str, assets=None):
-		''' '''
+	def connectBVM(self, view=1, read=0, write=0, network=0):
+		"""A connection to the forth comming Bitcion Virtual Machine"""
+
+	def initAddress(self, addr: str, assets=None):
+		""" """
 		self.addresses[addr] = {'obj': addresses.AddrO(addr, assets)}
 		return self
 
-	def initAddresses(self, addrs:list, assets=None):
+	def initAddresses(self, addrs: list, assets=None):
 		''' '''
 		if not isinstance(addrs, list):
 			addrs = [addrs]
@@ -77,20 +83,22 @@ class BASE(object):
 			self.w3 = w3
 		return self
 
-	def _loadABI(self, name: str=None, asset: str=None, version: str=None) -> str:
+	def _loadABI(self, name: str = None, asset: str = None, version: str = None) -> str:
 		''' '''
 		if log: print('Name', name, 'Asset', asset)
 		spath = 'protocols/_data_/assets/'
 		path = join(abspath(join(dirname(abspath(__file__)), '..')), spath)
 		if name == None:
 			name, asset, version = 'erc20', 'erc', 'v1'
-		#correct this path of assets to the protocols _data_ by protocol
+		# correct this path of assets to the protocols _data_ by protocol
 		with open(abspath(f"{path}{asset}-{version}/{name}.abi")) as f:
 			abi: str = json.load(f)
 		return abi
 
+
 class Token(BASE):
 	''' '''
+
 	def __init__(self, address, symbol=None, asset=None, version='v1', cfg={}):
 		''' '''
 		self.config = condor.instruct(pxcfg).select('Token').override(cfg)
@@ -99,7 +107,7 @@ class Token(BASE):
 		self.address = address
 		if not isinstance(self.address, addresses.AddrO):
 			self.address = addresses.AddrO(self.address)
-		#self.asset = self.evm.getAsset(self.address)
+		# self.asset = self.evm.getAsset(self.address)
 		self.abi = json.loads(str(self.config.dikt.get('abi')))
 
 	def buildAttributes(self):
@@ -115,6 +123,7 @@ class Token(BASE):
 		self.contract = self.address.getContract(self.abi)
 		return self
 
+
 def checkPrecision(token):
 	'''Check for precision stored locally and if not get from chain and store
 	locally for futre use'''
@@ -128,15 +137,19 @@ def checkPrecision(token):
 	store.write({token: precision})
 	return precision
 
+
 def getPrecision(token):
 	'''Get Precision from chain'''
 
+
 def loadProtocol(address, assets):
 	'''Given an address return the appropriate protocol  '''
-	#access asset lookup database use address to get information
-	#then look for explicit protocol availability
-	#if not default to a generic protocol
-	#
+
+
+# access asset lookup database use address to get information
+# then look for explicit protocol availability
+# if not default to a generic protocol
+#
 
 def loadToken(address, assets=None):
 	'''Given token address search database for protocol
