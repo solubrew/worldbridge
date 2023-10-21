@@ -20,25 +20,17 @@
 	<(WT)>: -32  #																||
 ''' #																			||
 # -*- coding: utf-8 -*-#														||
-#==================================Core Modules=================================||
-from os.path import abspath, dirname, join#										||
-from os import listdir
-import sys, types#														||
-from typing import List, Any, Optional, Callable, Union, Tuple, Dict
-#===============================================================================||
-from pandas import concat, DataFrame, to_datetime#				||
-#===============================================================================||
-from eth_account.signers.local import LocalAccount
-from eth_account.account import Account
-from eth_typing import AnyAddress
-from eth_utils import is_same_address
-#from web3.contract import ContractFunction
-from web3.eth import Contract
-from web3.types import TxParams, Wei, Address, ChecksumAddress,	ENS, Nonce
-from web3.types import HexBytes
-from web3 import Web3, HTTPProvider
-from web3.middleware import construct_sign_and_send_raw_middleware
+# ==================================Core Modules=================================||
+from os.path import abspath, dirname, join  # ||
 from secrets import token_bytes
+from typing import List, Union
+
+# ===============================================================================||
+from pandas import concat, DataFrame, to_datetime  # ||
+# ===============================================================================||
+# from web3.contract import ContractFunction
+from web3.types import Wei, Address, ChecksumAddress, ENS, Nonce
+
 try:
 	from sha3 import keccak_256
 except:
@@ -47,11 +39,9 @@ import hashlib
 from coincurve import PublicKey
 #===============================================================================||
 from condor import condor#										||
-from fxsquirl import fxsquirl
 from worldbridge import worldbridge
 from worldbridge.web2.blockchain import etherscan
-from worldbridge.web3.chains import addresses, connect
-from worldbridge.web3.protocols import protocols
+from worldbridge.web3.protocols import protocols, connect, addresses
 from worldbridge.web3 import utils
 #===============================================================================||
 here = join(dirname(__file__),'')#												||

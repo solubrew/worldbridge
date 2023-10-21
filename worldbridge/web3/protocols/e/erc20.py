@@ -5,9 +5,7 @@
 	docid:  #														||
 	name:   #														||
 	description: >  #															||
-		NFT
-		look at integration with NFT licensing project
-
+		Interact and generate ERC-20 compliant token contracts
 	expirary: '<[expiration]>'  #												||
 	version: '<[version]>'  #													||
 	path: '<[LEXIvrs]>'  #														||
@@ -18,27 +16,33 @@
 ''' #																			||
 # -*- coding: utf-8 -*-#														||
 #==================================Core Modules=================================||
-from os.path import abspath, dirname, join#										||
 #================================3rd Party Modules==============================||
 #===============================================================================||
-from condor import condor
-from worldbridge.web3.chains.ethereum import Token
+from worldbridge.web3.protocols.protocols import Token
 #===============================================================================||
 here = join(dirname(__file__),'')#												||
 there = join(dirname(__file__))
 where = abspath(join('..'))#													||set path at pheonix level
 module_path = abspath(join('../../../'))
 version = '0.0.0.0.0.0'#														||
-page = 200000
+log = True
 #===============================================================================||
-pxcfg = f'{here}_data_/erc1155.yaml'
-class ERC721(Token):
+pxcfg = join(abspath(here), '_data_/erc20.yaml')
+class ERC20(Token):
 	''' '''
 	def __init__(self, symbol, address, asset=None, cfg={}):
 		''' '''
-		self.address = address
+		self.config = condor.instruct(pxcfg).select('ERC20').override(cfg)
+		self.address = addresses.AddrO(address)
 		if asset == None:
-			asset = 'erc1155'
+			asset = 'erc20'
 		self.asset = asset
-		self.config = condor.instruct(pxcfg).select('ERC1155').override(cfg)
-		super(ERC1155, self).__init__(symbol, self.address, self.asset)
+		super(ERC20, self).__init__(symbol, self.address, self.asset)
+		self.version = version
+		abi = self.config.dikt.get('abi')
+		if abi:
+			self.abi = abi
+
+	def loadTransactions(self):
+		'''Get all transactions related to this ERC-20 token '''
+		return

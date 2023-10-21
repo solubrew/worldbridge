@@ -12,32 +12,23 @@
 	security: 'sec|lvl2'  #														||
 	<(WT)>: -32  #																||
 ''' #																			||
+import json as j  # ||
 # -*- coding: utf-8 -*-#														||
-#==================================Core Modules=================================||
-from os.path import abspath, dirname, join#										||
-from os import listdir
-import json as j, sys, types#																||
-from typing import List, Any, Optional, Callable, Union, Tuple, Dict
-#===============================================================================||
-from pandas import DataFrame#													||
-#===============================================================================||
-from eth_account.signers.local import LocalAccount
-from eth_account.account import Account
-from eth_typing import AnyAddress
-from eth_utils import is_same_address
-#from web3.contract import ContractFunction
-from web3.eth import Contract
-from web3.types import TxParams, Wei, Address, ChecksumAddress,	ENS, Nonce
-from web3.types import HexBytes
-from web3 import Web3, HTTPProvider
-from web3.middleware import construct_sign_and_send_raw_middleware
-#===============================================================================||
-from condor import condor#										||
-from squirl import squirl
+# ==================================Core Modules=================================||
+from os.path import abspath, dirname, join  # ||
+from typing import Union
+
+# ===============================================================================||
+from condor import condor  # ||
 from squirl.orgnql import sonql
-from worldbridge import worldbridge
-from worldbridge.web3.chains import ethereum as eth
+from web3 import Web3
+# ===============================================================================||
+# ===============================================================================||
+# from web3.contract import ContractFunction
+from web3.types import Address, ChecksumAddress, ENS
+
 from worldbridge.web3.protocols.protocols import BASE
+
 AddressLike = Union[Address, ChecksumAddress, ENS]
 _netid_to_name = {1: "mainnet", 4: "rinkeby"}
 #===============================================================================||

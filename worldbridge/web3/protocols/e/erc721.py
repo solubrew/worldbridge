@@ -17,22 +17,27 @@
 	<(WT)>: -32  #																||
 ''' #																			||
 # -*- coding: utf-8 -*-#														||
-#==================================Core Modules=================================||
-from os.path import abspath, dirname, join#										||
-#================================3rd Party Modules==============================||
-#===============================================================================||
+# ==================================Core Modules=================================||
+from os.path import abspath, dirname, join  # ||
+
+# ================================3rd Party Modules==============================||
+# ===============================================================================||
 from condor import condor
-from worldbridge.web3.chains import addresses, connect
+
+from worldbridge.web3.protocols import addresses
 from worldbridge.web3.protocols.protocols import Token
+
 #===============================================================================||
 here = join(dirname(__file__),'')#												||
 there = join(dirname(__file__))
-where = abspath(join('..'))#													||set path at pheonix level
-module_path = abspath(join('../../../'))
+where = abspath(join('../..'))  # ||set path at pheonix level
+module_path = abspath(join('../../../../'))
 version = '0.0.0.0.0.0'#														||
 log = True
 #===============================================================================||
-pxcfg = join(abspath(here), '_data_/erc721.yaml')
+pxcfg = join(abspath(here), '../_data_/erc721.yaml')
+
+
 class ERC721(Token):
 	''' '''
 	def __init__(self, symbol, address, asset=None, cfg={}):

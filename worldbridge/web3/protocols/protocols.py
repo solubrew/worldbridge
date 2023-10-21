@@ -20,7 +20,9 @@ from os.path import abspath, dirname, join  # ||
 
 # ===============================================================================||
 from condor import condor
-from worldbridge.web3.chains import addresses, evm
+
+from worldbridge.web3.protocols import evm, addresses
+
 # ===============================================================================||
 here = join(dirname(__file__), '')  # ||
 there = abspath(join('../../..'))  # ||set path at pheonix level
