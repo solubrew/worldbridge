@@ -1,4 +1,4 @@
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
 '''
 ---
 <(META)>:
@@ -12,7 +12,7 @@
 	<(WT)>: -32
 '''
 # -*- coding: utf-8 -*-
-#=======================================================================||
+# =======================================================================||
 # from __future__ import print_function
 # from builtins import super
 from os.path import abspath, dirname, join
@@ -27,21 +27,22 @@ from os.path import abspath, dirname, join
 # 	import _winreg, serial#												||
 # except:#																||
 # 	print('No module _winreg')#											||
-#===============================================================================||
-from worldbridge.libs import DataFrame
-#===============================================================================||
+# ===============================================================================||
+# ===============================================================================||
 from condor import condor
 from fxsquirl import collector
-#===============================================================================||
-here = join(dirname(__file__),'')#								||
-log = True
-#===============================================================================||
-pxcfg = join(abspath(here), '_data_/worldbridger.yaml')#								||use default configuration
 
-class stone(collector.engine):#
+# ===============================================================================||
+here = join(dirname(__file__), '')  # ||
+log = True
+# ===============================================================================||
+pxcfg = join(abspath(here), '_data_/worldbridger.yaml')  # ||use default configuration
+
+
+class stone(collector.engine):  #
 	'Object controlling the groups of devices'
 
-	def __init__(self, cfg={}):#	||
+	def __init__(self, cfg={}):  # ||
 		''' '''
 		self.config = condor.instruct(pxcfg).override(cfg)
 		collector.engine.__init__(self, self.config)
@@ -58,7 +59,7 @@ class stone(collector.engine):#
 		self.html = monql.doc(path).read()
 		return self
 
-	def getAsset(self, url: str, mods: dict={}):
+	def getAsset(self, url: str, mods: dict = {}):
 		'''Download a specific asset..integrate video downloading tool...primarily
 			youtube_dl not sure if i need other tools for video....also integrate
 			html and image saving tools'''
@@ -72,7 +73,7 @@ class stone(collector.engine):#
 			vid = ''
 		if mods['image'] == True:
 			img = ''
-		if mods ['audio'] == True:
+		if mods['audio'] == True:
 			aud = ''
 		return self
 
@@ -84,7 +85,8 @@ class stone(collector.engine):#
 			else:
 				return dikt[key]
 
-#==============================Source Materials=================================||
+
+# ==============================Source Materials=================================||
 '''
 https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=YOUR_API_KEY
 https://superuser.com/questions/632979/if-i-know-the-pid-number-of-a-process-how-can-i-get-its-name
@@ -92,7 +94,7 @@ https://stackoverflow.com/questions/17440585/how-to-get-pid-of-process-by-specif
 http://pubs.opengroup.org/onlinepubs/009696799/utilities/ps.html
 http://snipplr.com/view/14807/
 '''
-#================================:::DNA:::======================================||
+# ================================:::DNA:::======================================||
 '''
 <(DNA)>:
 	<@[datetime]@>:
@@ -104,4 +106,4 @@ http://snipplr.com/view/14807/
 			work:
 				- <@[work_datetime]@>
 '''
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||

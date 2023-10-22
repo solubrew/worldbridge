@@ -28,7 +28,6 @@ from typing import List, Union
 # ===============================================================================||
 from pandas import concat, DataFrame, to_datetime  # ||
 # ===============================================================================||
-# from web3.contract import ContractFunction
 from web3.types import Wei, Address, ChecksumAddress, ENS, Nonce
 
 try:

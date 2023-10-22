@@ -45,7 +45,7 @@ class Data(evm.EVMViewer):
 		self.max_slippage = self.config.dikt['cfg']['max_slippage']
 		self.protocols = self.config.dikt['protocols']
 		factory = self.protocols['factory'][self.version]
-		faddr =  addresses.AddrO(factory['networks'][self.network])
+		faddr = addresses.AddrO(factory['networks'][self.network])
 		abi = j.loads(factory['abi'])
 		self.factory = faddr.initW3(self.w3).getContract(abi)
 		if self.version in ('v2', 'v3'):
@@ -102,7 +102,8 @@ class Data(evm.EVMViewer):
 		token_addr: Address = (self.exchange_contract(ex_addr=exchange_addr).functions.tokenAddress(exchange_addr).call())
 		return token_addr
 
-	def exchange_contract(self, token_addr: evm.AddressLike = None, ex_addr: evm.AddressLike = None) -> evm.Contract:
+	def exchange_contract(self, token_addr: evm.AddressLike = None,
+	                      ex_addr: evm.AddressLike = None):  # -> evm.Contract:
 		if not ex_addr and token_addr:
 			ex_addr = self.exchange_address_from_token(token_addr)
 		if ex_addr is None:
@@ -113,7 +114,7 @@ class Data(evm.EVMViewer):
 		contract = self._load_contract(**params)
 		return contract
 
-	def erc20_contract(self, token_addr: evm.AddressLike) -> evm.Contract:
+	def erc20_contract(self, token_addr: evm.AddressLike):  # -> evm.Contract:
 		return self._load_contract(abi_name="erc20", address=token_addr)
 
 	def getPriceByTokens(self, tokens):
@@ -220,7 +221,7 @@ class Data(evm.EVMViewer):
 			price = self.router.functions.getAmountsIn(qty, [token, self.get_weth_address()]).call()[0]
 		return price
 
-	def get_token_token_output_price(self, token0: evm.AnyAddress, token1: evm.AnyAddress, qty: int) -> int:
+	def get_token_token_output_price(self, token0: evm.Address, token1: evm.Address, qty: int) -> int:
 		"""Public price for token to token trades with an exact output."""
 		# If one of the tokens are WETH, delegate to appropriate call.
 		# See: https://github.com/shanefontaine/uniswap-python/issues/22
@@ -346,7 +347,7 @@ class TRX(Data):
 		# Add extra sleep to let tx propogate correctly
 		time.sleep(1)
 
-	def Swap(self, input_token, output_token, qty, recipient=None) -> evm.HexBytes:
+	def Swap(self, input_token, output_token, qty, recipient=None):  # -> evm.HexBytes:
 		"""Make a trade by defining the qty of the input token."""
 		if input_token == ETH_ADDRESS:
 			return self._eth_to_token_swap_input(output_token, evm.Wei(qty), recipient)
